@@ -1,0 +1,233 @@
+.summary-section {
+    width: calc(100vw - 232px);
+  }
+  
+  .summary-section-head {
+    display: flex;
+    align-items: center;
+    width: 625px;
+    padding: 96px 96px 56px 96px;
+  }
+  
+  .summary-section-head h1 {
+    font-size: 61px;
+    margin: 0;
+  }
+  
+  .summary-section-head hr {
+    height: 59px;
+    border: 3px solid #29abe2;
+  }
+  
+  .summary-section-head span {
+    font-size: 27px;
+  }
+
+  .summary-section-head-mobile {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    width: 223px;
+    margin: 40px 0 40px 16px;
+  }
+
+  .summary-section-head-mobile h1 {
+    margin: 0;
+    font-size: 47px;
+  }
+
+  .summary-section-head-mobile span {
+    font-size: 20px;
+  }
+
+  .summary-section-head-mobile hr {
+    border: 3px solid #29ABE2;
+    width: 90px;
+    margin: 8px 0 0 0;
+  }
+  
+  .summary-content {
+    padding: 0 96px;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+  }
+  
+  .summary-container {
+    width: 560px;
+    height: 562px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .summary-medium-box {
+    height: 168px;
+    width: 264px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px #0000001a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .summary-medium-box:hover {
+    background-color: #2a3647;
+    color: #ffffff;
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .summary-medium-box:hover .summary-icon-background {
+    background-color: #ffffff;
+  }
+
+  .summary-medium-box:hover .summary-icon-background img {
+    filter: brightness(0) saturate(100%) invert(19%) sepia(16%) saturate(1042%) hue-rotate(176deg) brightness(90%) contrast(92%);
+  }
+  
+  .summary-medium-box span {
+    font-size: 64px;
+    font-weight: 600;
+  }
+  
+  .summary-medium-box p {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .summary-icon-background {
+    height: 69px;
+    width: 69px;
+    background-color: #2a3647;
+    border-radius: 69px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .todo-icon-summary {
+    height: 24.33px; 
+  }
+
+  .done-icon-summary {
+    height: 29.94px;
+  }
+  
+  .summary-large-box {
+    height: 168px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px #0000001a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 61px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .summary-large-box:hover {
+    background-color: #2a3647;
+    color: #ffffff;
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .summary-large-box hr {
+    height: 102.02px;
+    border: 2px solid #d1d1d1;
+    margin: 0;
+  }
+  
+  .summary-large-box-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+  }
+  
+  .summary-large-box-left img {
+    height: 60px;
+    width: 60px;
+  }
+  
+  .summary-large-box-left span {
+    font-size: 64px;
+    font-weight: 600;
+  }
+  
+  .summary-large-box-left p {
+    margin: 0;
+  }
+  
+  .summary-large-box-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 13px;
+  }
+  
+  .summary-large-box-right span {
+    font-size: 21px;
+    font-weight: 700;
+  }
+  
+  .summary-large-box-right p {
+    margin: 0;
+  }
+  
+  .summary-small-box {
+    height: 168px;
+    width: 168px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px #0000001a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .summary-small-box:hover {
+    background-color: #2a3647;
+    color: #ffffff;
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .summary-small-box span {
+    font-size: 64px;
+    font-weight: 600;
+  }
+  
+  .summary-small-box p {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .summary-greeting {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .summary-greeting h2 {
+    margin: 0;
+    font-size: 47px;
+    font-weight: 500;
+  }
+  
+  .summary-greeting span {
+    font-size: 64px;
+    color: #29abe2;
+    font-weight: 700;
+  }

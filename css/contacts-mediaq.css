@@ -1,0 +1,162 @@
+@media (max-width: 1350px) {
+    .contact-section-head {
+        width: 430px;
+        padding: 56px 40px 32px 40px;
+    }
+
+    .contact-section-head h1 {
+        font-size: 47px;
+    }
+
+    .contact-section-head hr {
+        height: 53px;
+    }
+
+    .contact-section-head p {
+        font-size: 20px;
+    }
+
+    .contact-big-profile-img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .contact-big-profile-img span {
+        font-size: 30px;
+    }
+
+    .contact-big-onclick {
+        width: 400px;
+    }
+
+    .contact-big-onclick h2 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .contact-section-content {
+        display: none;
+    }
+
+    .all-contacts-box {
+        width: 100%;
+    }
+
+    .all-contacts-box button {
+        display: none;
+    }
+
+    .add-contact-button-mobile {
+        display: flex;
+        bottom: 40px;
+        right: 40px;
+    }
+}
+
+
+@media (max-width: 850px) {
+    .contact-section {
+        width: 100vw;
+    }
+
+    .contact-section-content-mobile {
+        height: calc(100vh - 165px);
+        width: 100vw;
+    }
+
+    .contact-big-mobile-option-button {
+        margin-right: 16px;
+    }
+
+    .add-contact-button-mobile {
+        bottom: 110px;
+        right: 16px;
+    }
+}
+
+@media (max-width: 410px) {
+    .overlay-add-contact-mobile {
+        width: 350px;
+    }
+
+    .overlay-add-contact-mobile-top {
+        width: 350px;
+    }
+
+    .overlay-add-contact-mobile-mid {
+        width: 350px;
+    }
+
+    .overlay-add-contact-mobile-bottom {
+        width: 350px;
+    }
+
+    .input-fields-add-contact-mobile input {
+        width: 290px;
+        background-position: 290px 8px;
+    }
+}
+
+@media (max-width: 380px) {
+    .all-contacts-box button {
+        width: 300px;
+    }
+
+    .contact-list {
+        width: 300px;
+    }
+
+    .single-contact-box-content {
+        justify-content: center;
+        gap: 0;
+    }
+
+    .single-contact-box-content a {
+        display: none;
+    }
+
+    .contact-big-profile-img-mobile {
+        height: 65px;
+        width: 65px;
+    }
+
+    .contact-big-profile-img-mobile span {
+        font-size: 20px;
+    }
+
+    .contact-big-onclick-mobile h2 {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 360px) {
+    .overlay-add-contact-mobile {
+        width: 310px;
+    }
+
+    .overlay-add-contact-mobile-top {
+        width: 310px;
+    }
+
+    .overlay-add-contact-mobile-top h1 {
+        font-size: 40px;
+    }
+
+    .overlay-add-contact-mobile-top p {
+        font-size: 17px;
+    }
+
+    .overlay-add-contact-mobile-mid {
+        width: 310px;
+    }
+
+    .overlay-add-contact-mobile-bottom {
+        width: 310px;
+    }
+
+    .input-fields-add-contact-mobile input {
+        width: 250px;
+        background-position: 250px 8px;
+    }
+}

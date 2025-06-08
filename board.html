@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./img/join-logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./board.css" />
+    <link rel="stylesheet" href="./add-task.css" />
+    <link rel="stylesheet" href="./add-task-mediaq.css" />
+    <link rel="stylesheet" href="./board-mediaq.css" />
+    <link rel="stylesheet" href="./mediaq.css" />
+    <title>Board</title>
+  </head>
+
+  <body onload="boardInit()">
+    <nav id="desktopNav" class="desktop-nav"></nav>
+
+    <main>
+      <header id="header"></header>
+
+      <section class="board-section">
+        <div class="board-head">
+          <div class="grid1">
+            <h1>Board</h1>
+          </div>
+          <div class="grid2">
+            <div class="board-head-right-search">
+              <input
+                type="text"
+                placeholder="Find Task"
+                id="boardSearchInput"
+              />
+              <div class="board-head-right-search-lens">
+                <hr />
+                <img src="./img/search.svg" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="grid3">
+            <button class="board-head-right-add" onclick="addTask('ToDo')">
+              <span>Add task</span>
+              <img id="boardaddTaskIcon" src="./img/add-plus.svg" alt="" />
+              <img
+                id="boardaddTaskIconMediaQ"
+                class="board-add-Task-Icon-MediaQ"
+                src="./img/plus-button-mediaq.svg"
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
+        <div class="board-body">
+          <div class="board-body-header board-body-header-grid-1">
+            <h2>To do</h2>
+            <img
+              class="board-body-header-icon"
+              src="./img/plus-button.svg"
+              alt=""
+              onclick="addTask('ToDo')"
+            />
+          </div>
+          <div
+            class="board-body-body board-body-body-grid-1"
+            id="taskFieldToDo"
+            ondrop="moveTo('ToDo')"
+            ondragover="allowDrop(event); highlight('ToDo')"
+            ondragleave="removeHighlight('ToDo')"
+          ></div>
+          <div class="board-body-header board-body-header-grid-2">
+            <h2>In progress</h2>
+            <img
+              class="board-body-header-icon"
+              src="./img/plus-button.svg"
+              alt=""
+              onclick="addTask('InProgress')"
+            />
+          </div>
+          <div
+            class="board-body-body board-body-body-grid-2"
+            id="taskFieldInProgress"
+            ondrop="moveTo('InProgress')"
+            ondragover="allowDrop(event); highlight('InProgress')"
+            ondragleave="removeHighlight('InProgress')"
+          ></div>
+
+          <div class="board-body-header board-body-header-grid-3">
+            <h2>Await feedback</h2>
+            <img
+              class="board-body-header-icon"
+              src="./img/plus-button.svg"
+              alt=""
+              onclick="addTask('AwaitFeedback')"
+            />
+          </div>
+          <div
+            class="board-body-body board-body-body-grid-3"
+            id="taskFieldAwaitFeedback"
+            ondrop="moveTo('AwaitFeedback')"
+            ondragover="allowDrop(event); highlight('AwaitFeedback')"
+            ondragleave="removeHighlight('AwaitFeedback')"
+          ></div>
+
+          <div class="board-body-header board-body-header-grid-4">
+            <h2>Done</h2>
+          </div>
+          <div
+            class="board-body-body board-body-body-grid-4"
+            id="taskFieldDone"
+            ondrop="moveTo('Done')"
+            ondragover="allowDrop(event); highlight('Done')"
+            ondragleave="removeHighlight('Done')"
+          ></div>
+        </div>
+      </section>
+    </main>
+    <nav id="mobileNav" class="mobile-nav"></nav>
+
+    <section
+      class="board-overlay-task-background d-none"
+      id="taskOverlay"
+      onclick="boardOverlayTaskHide()"
+    ></section>
+
+    <section
+      class="board-overlay-task-background d-none"
+      id="taskOverlayEdit"
+    ></section>
+
+    <section class="board-add-task-background d-none" id="addTaskOverlay">
+      <div class="board-add-task transition-in-from-right">
+        <div class="board-add-task-header">
+          <h1>Add Task</h1>
+          <img
+            class="closeIcon"
+            src="./img/close.svg"
+            alt=""
+            onclick="addTaskHideOverlay()"
+          />
+        </div>
+        <div class="add-task-body" id="addTaskForm">
+          <div class="add-task-body-column">
+            <div class="add-task-content-box">
+              <label for="addTaskTitle"
+                >Title<span class="red-star">*</span></label
+              >
+              <div class="add-task-required-input">
+                <input
+                  type="text"
+                  name="addTaskTitle"
+                  id="addTaskTitle"
+                  placeholder="Enter a Title"
+                  class="add-task-content-box-input"
+                />
+                <div
+                  id="addTaskTitleRequired"
+                  class="add-task-small-required d-none"
+                >
+                  This field is required
+                </div>
+              </div>
+            </div>
+            <div class="add-task-content-box">
+              <label for="addTaskDescription">Description</label>
+              <textarea
+                class="add-task-textarea"
+                name="addTaskDescription"
+                id="addTaskDescription"
+                placeholder="Enter a Description"
+              ></textarea>
+            </div>
+            <div class="add-task-content-box">
+              <label for="addTaskAssignedTo">Assigned to</label>
+              <div
+                class="add-task-dropdown add-task-dropdown-shadow"
+                onclick="addTaskToggleContacts()"
+              >
+                <div
+                  class="add-task-dropdown-select"
+                  id="addTaskContactsDropdownButtonToToggle"
+                >
+                  <span id="addTaskAssignedTo">Select contacts to assign</span>
+                  <img
+                    src="./img/arrow-drop-down.svg"
+                    alt=""
+                    id="addTaskAssignedToArrow"
+                  />
+                </div>
+                <div class="d-none" id="addTaskAssignedToDropdownOptions"></div>
+              </div>
+              <div
+                class="add-task-assigned-contactlist"
+                id="addTaskAssignedToContactList"
+              ></div>
+            </div>
+          </div>
+
+          <div class="devider">
+            <hr class="add-task-devider" />
+          </div>
+
+          <div class="add-task-body-column">
+            <div class="add-task-content-box">
+              <label for="addTaskDueDate"
+                >Due date<span class="red-star">*</span></label
+              >
+              <div class="add-task-required-input">
+                <input
+                  class="add-task-content-box-input"
+                  type="date"
+                  name="addTaskDueDate"
+                  id="addTaskDueDate"
+                />
+                <div
+                  id="addTaskDueDateRequired"
+                  class="add-task-small-required d-none"
+                >
+                  This field is required
+                </div>
+              </div>
+            </div>
+            <div class="add-task-content-box">
+              <label>Prio</label>
+              <div class="add-task-priority-content-box">
+                <div
+                  class="add-task-priority white"
+                  onclick="addTaskPrioritySelect('Urgent')"
+                  id="addtaskPriorityUrgent"
+                >
+                  <span>Urgent</span>
+                  <img src="./img/prio-urgent.svg" alt="" />
+                </div>
+                <div
+                  class="add-task-priority orange"
+                  onclick="addTaskPrioritySelect('Medium')"
+                  id="addtaskPriorityMedium"
+                >
+                  <span>Medium</span>
+                  <img src="./img/prio-medium.svg" alt="" />
+                </div>
+                <div
+                  class="add-task-priority white"
+                  onclick="addTaskPrioritySelect('Low')"
+                  id="addtaskPriorityLow"
+                >
+                  <span>Low</span>
+                  <img src="./img/prio-low.svg" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="add-task-content-box">
+              <label>Category<span class="red-star">*</span></label>
+              <div
+                class="add-task-dropdown add-task-dropdown-shadow"
+                onclick="addTaskToggleCategory()"
+              >
+                <div
+                  class="add-task-dropdown-select"
+                  id="addTaskCategoryContainer"
+                >
+                  <span id="addTaskCategory">Select task category</span>
+                  <img
+                    src="./img/arrow-drop-down.svg"
+                    alt=""
+                    id="addTaskCategoryArrow"
+                  />
+                </div>
+                <div class="d-none" id="addTaskCategoryDropdownOptions">
+                  <div
+                    class="add-task-dropdown-option"
+                    onclick="addTaskSetCategory('Technical Task')"
+                  >
+                    <span>Technical Task</span>
+                  </div>
+                  <div
+                    class="add-task-dropdown-option"
+                    onclick="addTaskSetCategory('User Story')"
+                  >
+                    <span>User Story</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="addTaskCategoryRequired"
+                class="add-task-small-required d-none"
+              >
+                This field is required
+              </div>
+            </div>
+            <div class="add-task-content-box pointer">
+              <label>Subtasks</label>
+              <div class="add-task-subtask-add" id="addTaskSubtaskContainer">
+                <input
+                  id="addTaskSubtaskInput"
+                  type="text"
+                  placeholder="Add new subtask"
+                  class="add-task-content-box-input"
+                />
+                <div
+                  id="addTaskSubtaskPlusIcon"
+                  class="add-task-subtask-icon"
+                  onclick="addTaskSubtaskFocusInput()"
+                >
+                  <img class="filter" src="./img/add-plus.svg" alt="" />
+                </div>
+                <div
+                  id="addTaskSubtasIconSection"
+                  class="add-task-subtask-add-icon-section-input d-none"
+                >
+                  <div
+                    class="add-task-subtask-icon"
+                    onclick="addTaskSubtaskClearInput()"
+                  >
+                    <img src="./img/close.svg" alt="" class="filter" />
+                  </div>
+                  <hr class="add-task-subtask-devider" />
+                  <div
+                    class="add-task-subtask-icon"
+                    onclick="addTaskSubtaskSubmitInput()"
+                  >
+                    <img src="./img/check.svg" alt="" class="filter" />
+                  </div>
+                </div>
+              </div>
+              <div id="addTaskSubtaskList" class="add-task-subtask-list"></div>
+            </div>
+          </div>
+        </div>
+        <div class="add-task-bottom">
+          <span><strong class="red-star">*</strong>This field is required</span>
+          <div class="add-task-bottom-button-section">
+            <div
+              class="add-task-bottom-button btn-cancel"
+              onclick="addTaskHideOverlay()"
+            >
+              <span>Cancel</span>
+              <img class="icon-cancel" src="./img/cancel.svg" alt="" />
+            </div>
+            <button
+              class="add-task-bottom-button btn-check"
+              onclick="addTaskSubmit()"
+            >
+              <span>Create Task</span>
+              <img src="./img/check.svg" alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="task-Added-Slide d-none" id="taskAddedSlide">
+      <span>Task added to board</span>
+      <img src="./img/nav-icon-board.svg" alt="" />
+    </div>
+  </body>
+  <script src="./javascript/board_1.js"></script>
+  <script src="./javascript/boardOverlayEdit_1.js"></script>
+  <script src="./javascript/boardOverlayEdit_2.js"></script>
+  <script src="./javascript/board_2.js"></script>
+  <script src="./javascript/boardHTML.js"></script>
+  <script src="./javascript/boardOverlayHTML.js"></script>
+  <script src="./javascript/addTaskHTML.js"></script>
+  <script src="./javascript/addTask_1.js"></script>
+  <script src="./javascript/addTask_2.js"></script>
+  <script src="script.js"></script>
+</html>

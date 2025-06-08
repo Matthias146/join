@@ -1,0 +1,78 @@
+@media (max-width: 2560px) and (min-width: 851px) {
+    .d-none-2560-to-851 {
+        display: none;
+    }
+}
+
+@media (max-width: 850px) and (min-width: 320px) {
+    .header-overlay-menu {
+        top: 66px;
+    }
+
+    .hpl-section {
+        width: 100vw;
+    }
+
+    .all-contacts-box {
+        height: calc(100vh - 165px);
+    }
+}
+
+@media (max-width: 1050px) {
+    header {
+        padding: 20px 40px 20px 80px;
+    }
+}
+
+@media (max-width: 850px) {
+    body {
+        display: block;
+    }
+    
+    header {
+        padding: 20px 16px;
+        width: calc(100vw - 32px);
+    }
+
+    .header-left img {
+        display: block;
+    }
+
+    .header-left p {
+        display: none;
+    }
+
+    .header-help-icon {
+        display: none;
+    }
+
+    .header-user-icon {
+        height: 40px;
+        width: 40px;
+    }
+
+    .header-user-icon img {
+        width: 20.68px;
+        height: 10.54px;
+    }
+
+    .hpl-head {
+        padding: 48px 16px 0 16px;
+    }
+
+    .hpl-head h1 {
+        font-size: 47px;
+    }
+
+    .hpl-content {
+        padding: 0 16.5px 24px 16.5px;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+}
